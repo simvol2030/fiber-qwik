@@ -1,0 +1,7 @@
+{
+  "projectName": "go-fiber-qwik-city",
+  "hooks": {
+    "enabled": false,
+    "notifyScript": "./hooks/notify.sh"
+  }
+}

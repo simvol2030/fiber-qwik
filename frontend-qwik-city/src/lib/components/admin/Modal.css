@@ -1,0 +1,12 @@
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal { background: var(--admin-card-bg); border-radius: 12px; box-shadow: var(--shadow-md); max-height: calc(100vh - 2rem); display: flex; flex-direction: column; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-sm { width: 100%; max-width: 400px; }
+.modal-md { width: 100%; max-width: 560px; }
+.modal-lg { width: 100%; max-width: 800px; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid var(--admin-card-border); }
+.modal-title { font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin: 0; }
+.modal-close { background: transparent; border: none; font-size: 1.25rem; cursor: pointer; color: var(--color-text-secondary); padding: 0.25rem; transition: color 0.2s; }
+.modal-close:hover { color: var(--color-text); }
+.modal-body { padding: 1.5rem; overflow-y: auto; }

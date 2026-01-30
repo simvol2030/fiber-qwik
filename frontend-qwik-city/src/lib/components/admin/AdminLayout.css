@@ -1,0 +1,9 @@
+.admin-layout { min-height: 100vh; background: var(--admin-content-bg); }
+.admin-main { margin-left: var(--admin-sidebar-width); margin-top: var(--admin-header-height); min-height: calc(100vh - var(--admin-header-height)); transition: margin-left 0.3s ease; }
+.admin-layout.sidebar-collapsed .admin-main { margin-left: var(--admin-sidebar-collapsed-width); }
+.admin-content { padding: 1.5rem; max-width: 1400px; margin: 0 auto; }
+@media (max-width: 768px) {
+  .admin-main { margin-left: 0; }
+  .admin-layout.sidebar-collapsed .admin-main { margin-left: 0; }
+  .admin-content { padding: 1rem; }
+}

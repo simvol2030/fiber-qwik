@@ -1,0 +1,17 @@
+.dashboard-header { margin-bottom: 2rem; }
+.dashboard-header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.welcome { color: var(--color-text-secondary); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.stat-card h3 { font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 0.5rem; font-weight: 500; }
+.stat-value { font-size: 1.25rem; font-weight: 600; }
+.dashboard-section { margin-bottom: 2rem; }
+.dashboard-section h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.activity-list { min-height: 100px; display: flex; align-items: center; justify-content: center; }
+.no-activity { color: var(--color-text-secondary); }
+.admin-panel-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: var(--color-bg); border: 1px solid var(--admin-badge-admin, #4f46e5); border-radius: var(--radius); text-decoration: none; color: var(--color-text); transition: background-color 0.2s, box-shadow 0.2s; }
+.admin-panel-link:hover { background: var(--color-bg-secondary); box-shadow: var(--shadow-md); text-decoration: none; }
+.admin-panel-link strong { display: block; font-size: 1rem; }
+.admin-panel-link small { color: var(--color-text-secondary); font-size: 0.8125rem; }
+.admin-panel-icon { font-size: 1.5rem; color: var(--admin-badge-admin, #4f46e5); }
+.admin-panel-arrow { margin-left: auto; font-size: 1.25rem; color: var(--color-text-secondary); }

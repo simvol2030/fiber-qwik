@@ -1,0 +1,49 @@
+// PM2 Ecosystem Configuration
+// Copy to ecosystem.config.js and fill in your values:
+//   cp ecosystem.config.js.example ecosystem.config.js
+
+module.exports = {
+  apps: [
+    {
+      name: 'fiber-qwik-backend',
+      cwd: '/opt/websites/fiber-qwik/backend-go-fiber',
+      script: './server',
+      interpreter: 'none',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3001,
+        HOST: '127.0.0.1',
+        DATABASE_URL: 'file:../data/db/sqlite/app.db?_journal_mode=WAL&_busy_timeout=5000&_synchronous=NORMAL&_cache_size=-262144&_foreign_keys=ON',
+        JWT_SECRET: 'CHANGE_ME_TO_A_SECURE_SECRET_AT_LEAST_32_CHARS',
+        JWT_EXPIRES_IN: '15m',
+        REFRESH_TOKEN_EXPIRES_DAYS: '7',
+        CORS_ORIGINS: 'https://fiber-qwik.klik1.ru',
+        LOG_LEVEL: 'info',
+        FRONTEND_URL: 'https://fiber-qwik.klik1.ru',
+        UPLOAD_DIR: '../data/uploads',
+        MAX_UPLOAD_SIZE: '10485760'
+      },
+      log_file: '/opt/websites/fiber-qwik/data/logs/backend.log',
+      error_file: '/opt/websites/fiber-qwik/data/logs/backend-error.log',
+      max_memory_restart: '200M',
+      restart_delay: 3000
+    },
+    {
+      name: 'qwik-frontend',
+      cwd: '/opt/websites/fiber-qwik/frontend-qwik-city',
+      script: 'server/entry.fastify.js',
+      interpreter: 'node',
+      env: {
+        PORT: 3000,
+        HOST: '127.0.0.1',
+        NODE_ENV: 'production',
+        ORIGIN: 'https://fiber-qwik.klik1.ru',
+        API_URL: 'http://127.0.0.1:3001'
+      },
+      log_file: '/opt/websites/fiber-qwik/data/logs/frontend.log',
+      error_file: '/opt/websites/fiber-qwik/data/logs/frontend-error.log',
+      max_memory_restart: '300M',
+      restart_delay: 3000
+    }
+  ]
+};

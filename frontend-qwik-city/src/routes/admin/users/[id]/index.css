@@ -1,0 +1,14 @@
+.edit-user-page { max-width: 600px; }
+.page-header { margin-bottom: 1.5rem; }
+.back-link { display: inline-block; margin-bottom: 0.5rem; color: var(--color-text-secondary); text-decoration: none; font-size: 0.875rem; }
+.back-link:hover { color: var(--color-primary); }
+.page-title { font-size: 1.5rem; font-weight: 600; color: var(--color-text); margin: 0; }
+.loading-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 4rem 2rem; text-align: center; color: var(--color-text-secondary); }
+.spinner { width: 40px; height: 40px; border: 3px solid var(--color-border); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.user-meta { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.meta-item { display: flex; gap: 0.5rem; font-size: 0.875rem; }
+.meta-label { color: var(--color-text-secondary); }
+.meta-value { color: var(--color-text); }
+code.meta-value { font-family: monospace; font-size: 0.8rem; background: var(--color-bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px; }
+.divider { border: none; border-top: 1px solid var(--admin-card-border); margin: 1.5rem 0; }

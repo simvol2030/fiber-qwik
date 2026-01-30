@@ -1,0 +1,57 @@
+# =============================================================================
+# Docker Build Context Ignore
+# =============================================================================
+# Exclude files not needed in the Docker build to speed up builds
+# and reduce image size
+# =============================================================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+docs/
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment files (NEVER include in image)
+.env
+.env.*
+!.env.example
+
+# Test files
+*_test.go
+**/*_test.go
+coverage.out
+coverage.html
+
+# Build artifacts (we build fresh in Docker)
+bin/
+dist/
+*.exe
+
+# Data directory (mounted as volume)
+data/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Go specific
+vendor/
+go.work
+go.work.sum

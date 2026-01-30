@@ -1,0 +1,12 @@
+.profile-page { max-width: 640px; margin: 0 auto; }
+.profile-header { margin-bottom: 2rem; }
+.profile-header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.profile-subtitle { color: var(--color-text-secondary); }
+.profile-card { margin-bottom: 1.5rem; }
+.profile-card h2 { font-size: 1.25rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.info-item { display: flex; flex-direction: column; gap: 0.25rem; }
+.info-label { font-size: 0.8125rem; color: var(--color-text-secondary); font-weight: 500; }
+.info-value { font-size: 0.9375rem; font-weight: 500; }
+.profile-back { margin-top: 1rem; margin-bottom: 2rem; }
+@media (max-width: 480px) { .info-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,9 @@
+{
+  "name": "Box App",
+  "short_name": "BoxApp",
+  "description": "Production-ready starter application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6"
+}

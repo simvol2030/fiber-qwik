@@ -1,0 +1,9 @@
+.admin-page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+.admin-page-title { font-size: 1.5rem; font-weight: 600; color: var(--color-text); margin: 0; }
+.admin-card { background: var(--admin-card-bg); border: 1px solid var(--admin-card-border); border-radius: 12px; padding: 1.5rem; box-shadow: var(--admin-card-shadow); }
+.admin-grid { display: grid; gap: 1.5rem; }
+.admin-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.admin-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.admin-grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) { .admin-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .admin-grid-2, .admin-grid-3, .admin-grid-4 { grid-template-columns: 1fr; } }

@@ -1,0 +1,66 @@
+# Database
+data/db/sqlite/*.db
+data/db/sqlite/*.db-journal
+data/db/sqlite/*.db-wal
+data/db/sqlite/*.db-shm
+data/db/postgres/*
+!data/db/postgres/.gitkeep
+
+# SQLite WAL files (anywhere in project)
+*.db-wal
+*.db-shm
+
+# Logs
+data/logs/*.log
+
+# Media uploads
+data/media/*
+!data/media/.gitkeep
+
+# Images (safety net - NEVER in git)
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.mp4
+*.webm
+*.mov
+*.pdf
+
+# Build artifacts
+node_modules/
+dist/
+build/
+.qwik/
+tmp/
+server/
+target/
+bin/
+
+# Go compiled binaries
+backend-go-fiber/server
+backend-go-fiber/server-linux
+
+# Environment (SECRETS!)
+.env
+.env.local
+.env.production
+!.env.example
+
+# PM2 config (contains JWT_SECRET)
+ecosystem.config.js
+!ecosystem.config.js.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal

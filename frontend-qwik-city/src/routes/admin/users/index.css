@@ -1,0 +1,5 @@
+.users-page { display: flex; flex-direction: column; gap: 1.5rem; }
+.page-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.page-title { font-size: 1.5rem; font-weight: 600; color: var(--color-text); margin: 0; }
+.btn-create { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--color-primary); color: white; border: none; border-radius: 8px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+.btn-create:hover { background: var(--color-primary-hover); }

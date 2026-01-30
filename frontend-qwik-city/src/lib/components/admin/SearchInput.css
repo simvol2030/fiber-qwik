@@ -1,0 +1,7 @@
+.search-input { position: relative; display: flex; align-items: center; }
+.search-icon-label { position: absolute; left: 0.75rem; font-size: 1rem; pointer-events: none; }
+.search-input input { width: 100%; padding: 0.625rem 2.5rem; border: 1px solid var(--admin-card-border); border-radius: 8px; background: var(--admin-card-bg); color: var(--color-text); font-size: 0.875rem; transition: border-color 0.2s, box-shadow 0.2s; }
+.search-input input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+.search-input input::placeholder { color: var(--color-text-secondary); }
+.clear-btn { position: absolute; right: 0.5rem; background: transparent; border: none; padding: 0.25rem 0.5rem; cursor: pointer; color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s; }
+.clear-btn:hover { color: var(--color-text); }

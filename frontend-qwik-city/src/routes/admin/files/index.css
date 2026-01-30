@@ -1,0 +1,51 @@
+.files-page { display: flex; flex-direction: column; gap: 1.5rem; }
+.page-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.page-header-actions { display: flex; align-items: center; gap: 0.75rem; }
+.page-title { font-size: 1.5rem; font-weight: 600; color: var(--color-text); margin: 0; }
+.total-size { font-size: 0.875rem; color: var(--color-text-secondary); background: var(--color-bg-secondary); padding: 0.5rem 1rem; border-radius: 6px; }
+.btn-upload { padding: 0.5rem 1.25rem; background: var(--color-primary); color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.btn-upload:hover { background: var(--color-primary-hover); }
+.upload-panel { background: var(--admin-card-bg); border: 1px solid var(--admin-card-border); border-radius: 8px; padding: 1.5rem; }
+.upload-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.upload-panel-header h3 { margin: 0; font-size: 1.125rem; font-weight: 600; }
+.upload-close { background: transparent; border: none; font-size: 1.5rem; color: var(--color-text-secondary); cursor: pointer; padding: 0.25rem 0.5rem; line-height: 1; }
+.upload-close:hover { color: var(--color-text); }
+.drop-zone { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; padding: 2.5rem 1.5rem; border: 2px dashed var(--color-border); border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; text-align: center; }
+.drop-zone:hover, .drop-zone.dragging { border-color: var(--color-primary); background: rgba(59, 130, 246, 0.05); }
+.drop-icon { font-size: 2.5rem; }
+.drop-text { font-weight: 500; color: var(--color-text); margin: 0; }
+.drop-hint { font-size: 0.8125rem; color: var(--color-text-secondary); margin: 0; }
+.selected-files { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.selected-file { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; background: var(--color-bg-secondary); border-radius: 6px; }
+.selected-file-name { flex: 1; font-size: 0.875rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.selected-file-size { font-size: 0.8125rem; color: var(--color-text-secondary); white-space: nowrap; }
+.selected-file-remove { background: transparent; border: none; color: var(--color-error); cursor: pointer; font-size: 1.25rem; padding: 0 0.25rem; line-height: 1; }
+.upload-actions { margin-top: 1rem; display: flex; justify-content: flex-end; }
+.btn-upload-start { padding: 0.625rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; }
+.btn-upload-start:hover { background: var(--color-primary-hover); }
+.btn-upload-start:disabled { background: var(--color-secondary); cursor: not-allowed; }
+.breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 0.25rem; font-size: 0.875rem; }
+.breadcrumb-item { background: transparent; border: none; color: var(--color-text-secondary); cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 4px; transition: background 0.2s, color 0.2s; }
+.breadcrumb-item:hover { background: var(--color-bg-secondary); color: var(--color-text); }
+.breadcrumb-item.active { color: var(--color-text); font-weight: 500; }
+.breadcrumb-separator { color: var(--color-text-secondary); }
+.loading-state, .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 4rem 2rem; text-align: center; color: var(--color-text-secondary); }
+.spinner { width: 40px; height: 40px; border: 3px solid var(--color-border); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty-icon { font-size: 3rem; }
+.btn-back { padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 6px; cursor: pointer; }
+.files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.file-item { display: flex; flex-direction: column; position: relative; background: var(--color-bg-secondary); border-radius: 8px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+.file-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.file-content { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.5rem 1rem; text-decoration: none; color: inherit; background: transparent; border: none; cursor: pointer; text-align: center; width: 100%; }
+.file-back { background: transparent; border: 1px dashed var(--color-border); }
+.file-icon { font-size: 2.5rem; }
+.file-name { font-weight: 500; color: var(--color-text); font-size: 0.875rem; word-break: break-all; max-width: 100%; }
+.file-meta { font-size: 0.75rem; color: var(--color-text-secondary); }
+.file-delete { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(239, 68, 68, 0.9); border: none; border-radius: 4px; padding: 0.25rem 0.5rem; cursor: pointer; opacity: 0; transition: opacity 0.2s; }
+.file-item:hover .file-delete { opacity: 1; }
+@media (max-width: 640px) {
+  .files-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-header { flex-direction: column; align-items: flex-start; }
+  .page-header-actions { width: 100%; justify-content: space-between; }
+}

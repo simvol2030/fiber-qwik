@@ -1,0 +1,63 @@
+# =============================================================================
+# EditorConfig - Consistent coding styles across editors
+# =============================================================================
+# https://editorconfig.org
+#
+# Supported by: VS Code, IntelliJ, Sublime, Vim, Emacs, and more
+# =============================================================================
+
+root = true
+
+# Default for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+
+# Go files (gofmt standard)
+[*.go]
+indent_style = tab
+indent_size = 4
+
+# JavaScript/TypeScript/Svelte (2 spaces, common convention)
+[*.{js,ts,jsx,tsx,svelte,json,css,scss}]
+indent_style = tab
+indent_size = 2
+
+# YAML files (2 spaces required by spec)
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2
+
+# Makefile (requires tabs)
+[Makefile]
+indent_style = tab
+
+# Shell scripts
+[*.sh]
+indent_style = space
+indent_size = 2
+
+# Docker files
+[Dockerfile*]
+indent_style = space
+indent_size = 4
+
+# Git config
+[.git*]
+indent_style = space
+indent_size = 2
+
+# SQL files
+[*.sql]
+indent_style = space
+indent_size = 2
