@@ -6,6 +6,7 @@ import {
   getIsAuthenticated,
   subscribe,
 } from "~/lib/stores/auth";
+import "./index.css";
 
 export default component$(() => {
   const nav = useNavigate();

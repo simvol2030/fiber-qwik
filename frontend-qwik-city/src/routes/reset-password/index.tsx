@@ -1,6 +1,7 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { type DocumentHead, useLocation } from "@builder.io/qwik-city";
 import { api } from "~/lib/api/client";
+import "./index.css";
 
 export default component$(() => {
   const loc = useLocation();

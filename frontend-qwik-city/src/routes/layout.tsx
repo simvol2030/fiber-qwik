@@ -1,5 +1,6 @@
 import { component$, Slot, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { useNavigate } from "@builder.io/qwik-city";
+import "./layout.css";
 import {
   initAuth,
   getUser,

@@ -1,6 +1,7 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { getIsAuthenticated, subscribe } from "~/lib/stores/auth";
+import "./index.css";
 
 export default component$(() => {
   const isAuthenticated = useSignal(false);

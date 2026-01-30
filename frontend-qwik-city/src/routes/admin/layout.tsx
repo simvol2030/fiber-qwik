@@ -5,6 +5,7 @@ import "~/lib/components/admin/AdminLayout.css";
 import "~/lib/components/admin/Sidebar.css";
 import "~/lib/components/admin/Header.css";
 import "~/lib/components/admin/Toast.css";
+import "./layout.css";
 
 export default component$(() => {
   const loc = useLocation();
