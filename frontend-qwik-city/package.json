@@ -6,14 +6,15 @@
   "scripts": {
     "build": "qwik build",
     "build.client": "vite build",
-    "build.server": "vite build --ssr src/entry.ssr.tsx",
+    "build.server": "vite build -c adapters/node-server/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "preview": "qwik build && vite preview",
-    "start": "node server/entry.fastify.js",
+    "serve": "node server/entry.node-server",
+    "start": "node server/entry.node-server",
     "qwik": "qwik"
   },
   "devDependencies": {
@@ -28,5 +29,8 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "ignore": "^7.0.5"
   }
 }

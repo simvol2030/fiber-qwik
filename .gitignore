@@ -35,6 +35,8 @@ build/
 .qwik/
 tmp/
 /server/
+frontend-qwik-city/server/
+frontend-qwik-city/dist/
 target/
 bin/
 
