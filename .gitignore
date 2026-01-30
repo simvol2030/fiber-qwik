@@ -34,7 +34,7 @@ dist/
 build/
 .qwik/
 tmp/
-server/
+/server/
 target/
 bin/
 
