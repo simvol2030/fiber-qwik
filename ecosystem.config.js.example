@@ -31,7 +31,7 @@ module.exports = {
     {
       name: 'qwik-frontend',
       cwd: '/opt/websites/fiber-qwik/frontend-qwik-city',
-      script: 'server/entry.fastify.js',
+      script: 'server/entry.node-server.js',
       interpreter: 'node',
       env: {
         PORT: 3000,

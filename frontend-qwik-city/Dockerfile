@@ -38,4 +38,4 @@ ENV NODE_ENV=production
 ENV PORT=3000
 
 # Start the server
-CMD ["node", "server/entry.fastify.js"]
+CMD ["node", "server/entry.node-server.js"]
