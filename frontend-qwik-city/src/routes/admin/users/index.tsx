@@ -41,19 +41,24 @@ export default component$(() => {
       label: "Edit",
       icon: "\u270F\uFE0F",
       variant: "primary",
-      onClick: (item: Record<string, unknown>) =>
-        nav(`/admin/users/${item.id}`),
+      type: "edit",
     },
     {
       label: "Delete",
       icon: "\uD83D\uDDD1\uFE0F",
       variant: "danger",
-      onClick: (item: Record<string, unknown>) => {
-        userToDelete.value = item as unknown as AdminUser;
-        showDeleteConfirm.value = true;
-      },
+      type: "delete",
     },
   ];
+
+  const handleAction = $((type: string, item: Record<string, unknown>) => {
+    if (type === "edit") {
+      nav(`/admin/users/${item.id}`);
+    } else if (type === "delete") {
+      userToDelete.value = item as unknown as AdminUser;
+      showDeleteConfirm.value = true;
+    }
+  });
 
   const loadUsers = $(async () => {
     loading.value = true;
@@ -181,6 +186,7 @@ export default component$(() => {
         onSort$={handleSort}
         onPageChange$={handlePageChange}
         onExport$={exportCSV}
+        onAction$={handleAction}
       />
 
       <ConfirmDialog

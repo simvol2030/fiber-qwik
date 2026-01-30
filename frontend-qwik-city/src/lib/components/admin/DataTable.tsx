@@ -1,4 +1,4 @@
-import { component$, useSignal, $ } from "@builder.io/qwik";
+import { component$, useSignal, $, type QRL } from "@builder.io/qwik";
 import { SearchInput } from "./SearchInput";
 import { Pagination } from "./Pagination";
 
@@ -15,7 +15,7 @@ export interface Action {
   label: string;
   icon?: string;
   variant?: "default" | "primary" | "danger";
-  onClick: (item: Record<string, unknown>) => void;
+  type: string;
 }
 
 interface DataTableProps {
@@ -30,10 +30,11 @@ interface DataTableProps {
   actions?: Action[];
   loading?: boolean;
   emptyMessage?: string;
-  onSearch$?: (value: string) => void;
-  onSort$?: (key: string, dir: "asc" | "desc") => void;
-  onPageChange$?: (page: number) => void;
-  onExport$?: () => void;
+  onSearch$?: QRL<(value: string) => void>;
+  onSort$?: QRL<(key: string, dir: "asc" | "desc") => void>;
+  onPageChange$?: QRL<(page: number) => void>;
+  onExport$?: QRL<() => void>;
+  onAction$?: QRL<(type: string, item: Record<string, unknown>) => void>;
 }
 
 function formatValue(value: unknown, column: Column): string {
@@ -87,6 +88,7 @@ export const DataTable = component$<DataTableProps>(
     onSort$,
     onPageChange$,
     onExport$,
+    onAction$,
   }) => {
     const sortKey = useSignal("");
     const sortDir = useSignal<"asc" | "desc">("asc");
@@ -211,7 +213,7 @@ export const DataTable = component$<DataTableProps>(
                           <button
                             key={aIdx}
                             class={`action-btn action-${action.variant || "default"}`}
-                            onClick$={() => action.onClick(item)}
+                            onClick$={() => onAction$?.(action.type, item)}
                             title={action.label}
                           >
                             {action.icon && <span>{action.icon}</span>}
