@@ -12,6 +12,7 @@ Clone the repo and start building your project in minutes.
 
 ```bash
 git clone https://github.com/simvol2030/fiber-qwik.git my-project
+# or use GitHub template: "Use this template" button on GitHub
 cd my-project
 
 # Point to your own repository
@@ -20,10 +21,15 @@ git remote set-url origin https://github.com/YOUR_USER/YOUR_REPO.git
 
 ### Step 2: Change these values
 
+**Quick find & replace:** Search for `YOUR_DOMAIN` and `YOUR_PROJECT` across all config files.
+
 | What | Where | Change to |
 |------|-------|-----------|
 | **JWT_SECRET** | `ecosystem.config.js` or `.env` | New random string 32+ chars. Generate: `openssl rand -base64 32` |
 | **Domain** | `ecosystem.config.js` -> `CORS_ORIGINS`, `FRONTEND_URL`, `ORIGIN` | Your domain (e.g. `https://my-app.com`) |
+| **Domain** | `deploy/nginx.conf` -> `server_name`, `ssl_certificate`, logs | Replace all `YOUR_DOMAIN` |
+| **Project path** | `ecosystem.config.js` -> `cwd`, `log_file`, `error_file` | Replace all `YOUR_PROJECT` (e.g. `my-app`) |
+| **PM2 names** | `ecosystem.config.js` -> `name` | Replace `YOUR_PROJECT-backend`, `YOUR_PROJECT-frontend` |
 | **App name** | `frontend-qwik-city/package.json` -> `name` | Your project name |
 | **App title** | `frontend-qwik-city/src/root.tsx` -> `<title>` | Your app title |
 | **Footer** | `frontend-qwik-city/src/routes/layout.tsx` | Your company/project name |
@@ -305,8 +311,6 @@ See `.env.example` for complete list.
 
 ## Production Deployment
 
-### Domain: fiber-qwik.klik1.ru
-
 ### Pre-deployment Checklist
 
 ```bash
@@ -353,10 +357,19 @@ curl http://localhost:3001/health
 
 ### Deploy with Nginx (Reverse Proxy)
 
-1. Copy `deploy/nginx.conf` to `/etc/nginx/sites-available/fiber-qwik.klik1.ru.conf`
-2. Update `server_name` and SSL certificate paths
-3. Create symlink: `ln -s /etc/nginx/sites-available/fiber-qwik.klik1.ru.conf /etc/nginx/sites-enabled/`
-4. Test and reload: `nginx -t && systemctl reload nginx`
+```bash
+# 1. Copy nginx config (replace YOUR_DOMAIN with your domain)
+sudo cp deploy/nginx.conf /etc/nginx/sites-available/YOUR_DOMAIN.conf
+
+# 2. Replace all YOUR_DOMAIN placeholders
+sudo sed -i 's/YOUR_DOMAIN/my-app.example.com/g' /etc/nginx/sites-available/YOUR_DOMAIN.conf
+
+# 3. Enable site
+sudo ln -s /etc/nginx/sites-available/YOUR_DOMAIN.conf /etc/nginx/sites-enabled/
+
+# 4. Test and reload
+sudo nginx -t && sudo systemctl reload nginx
+```
 
 ### SSL with Let's Encrypt
 
@@ -364,8 +377,8 @@ curl http://localhost:3001/health
 # Install certbot
 apt install certbot python3-certbot-nginx
 
-# Get certificate
-certbot --nginx -d fiber-qwik.klik1.ru
+# Get certificate (replace with your domain)
+certbot --nginx -d YOUR_DOMAIN
 
 # Auto-renewal (cron)
 0 0 * * * /usr/bin/certbot renew --quiet
@@ -373,28 +386,53 @@ certbot --nginx -d fiber-qwik.klik1.ru
 
 ---
 
-## PostgreSQL Setup
+## Database: SQLite → PostgreSQL
 
-### Development (Docker profile)
+The project starts with **SQLite** (zero setup) and switches to **PostgreSQL** when you need production scale. GORM auto-migrates tables on startup — no manual migrations needed.
+
+### When to switch
+
+| SQLite | PostgreSQL |
+|--------|-----------|
+| Development, prototyping | Production with traffic |
+| Single server, low load | Multiple connections, high load |
+| 1 process (Prefork=false) | Multi-process (Prefork=true) |
+
+### How to switch (1 line change)
 
 ```bash
-# Start with PostgreSQL
+# .env — development (SQLite, default)
+DATABASE_URL=sqlite:./data/db/sqlite/app.db
+
+# .env — production (PostgreSQL, just uncomment and fill)
+DATABASE_URL=postgresql://user:password@localhost:5432/app?sslmode=disable
+```
+
+That's it. Restart the backend — GORM creates all tables automatically.
+
+### PostgreSQL with Docker (local testing)
+
+```bash
 docker-compose --profile postgres up -d
 
-# Update .env
+# Backend will use:
 DATABASE_URL=postgresql://app:secret@localhost:5432/app
 ```
 
-### Production
+### PostgreSQL in production
 
 ```bash
 # 1. Create database
 createdb -U postgres app
 
-# 2. Update .env
+# 2. Update ecosystem.config.js
 DATABASE_URL=postgresql://user:password@host:5432/app?sslmode=require
 
-# 3. Run migrations (GORM auto-migrates on startup)
+# 3. Enable multi-process mode (optional, for high load)
+PREFORK=true
+
+# 4. Restart
+pm2 restart all
 ```
 
 ---

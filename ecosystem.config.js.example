@@ -5,8 +5,8 @@
 module.exports = {
   apps: [
     {
-      name: 'fiber-qwik-backend',
-      cwd: '/opt/websites/fiber-qwik/backend-go-fiber',
+      name: 'YOUR_PROJECT-backend',
+      cwd: '/opt/websites/YOUR_PROJECT/backend-go-fiber',
       script: './server',
       interpreter: 'none',
       env: {
@@ -17,31 +17,31 @@ module.exports = {
         JWT_SECRET: 'CHANGE_ME_TO_A_SECURE_SECRET_AT_LEAST_32_CHARS',
         JWT_EXPIRES_IN: '15m',
         REFRESH_TOKEN_EXPIRES_DAYS: '7',
-        CORS_ORIGINS: 'https://fiber-qwik.klik1.ru',
+        CORS_ORIGINS: 'https://YOUR_DOMAIN',
         LOG_LEVEL: 'info',
-        FRONTEND_URL: 'https://fiber-qwik.klik1.ru',
+        FRONTEND_URL: 'https://YOUR_DOMAIN',
         UPLOAD_DIR: '../data/uploads',
         MAX_UPLOAD_SIZE: '10485760'
       },
-      log_file: '/opt/websites/fiber-qwik/data/logs/backend.log',
-      error_file: '/opt/websites/fiber-qwik/data/logs/backend-error.log',
+      log_file: '/opt/websites/YOUR_PROJECT/data/logs/backend.log',
+      error_file: '/opt/websites/YOUR_PROJECT/data/logs/backend-error.log',
       max_memory_restart: '200M',
       restart_delay: 3000
     },
     {
-      name: 'qwik-frontend',
-      cwd: '/opt/websites/fiber-qwik/frontend-qwik-city',
+      name: 'YOUR_PROJECT-frontend',
+      cwd: '/opt/websites/YOUR_PROJECT/frontend-qwik-city',
       script: 'server/entry.node-server.js',
       interpreter: 'node',
       env: {
         PORT: 3000,
         HOST: '127.0.0.1',
         NODE_ENV: 'production',
-        ORIGIN: 'https://fiber-qwik.klik1.ru',
+        ORIGIN: 'https://YOUR_DOMAIN',
         API_URL: 'http://127.0.0.1:3001'
       },
-      log_file: '/opt/websites/fiber-qwik/data/logs/frontend.log',
-      error_file: '/opt/websites/fiber-qwik/data/logs/frontend-error.log',
+      log_file: '/opt/websites/YOUR_PROJECT/data/logs/frontend.log',
+      error_file: '/opt/websites/YOUR_PROJECT/data/logs/frontend-error.log',
       max_memory_restart: '300M',
       restart_delay: 3000
     }
